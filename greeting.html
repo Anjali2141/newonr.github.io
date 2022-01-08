@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+
+   <link rel="stylesheet" href="greeting.css">
+
+    <script>
+
+        let name = prompt("Enter Your Name") ;
+        
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        
+        setInterval(() => {
+
+            //For current time & date
+            let dt = new Date();
+
+            let current_hr = dt.toLocaleDateString(undefined, options);
+            let current_time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds() ;
+
+            let prev = document.getElementById("time").innerHTML ;
+            document.getElementById("time").innerHTML = current_time + "\ton\t" + current_hr;
+            
+            // var today = new Date() ;
+
+            //For Greeting
+            var hour = dt.getHours() ;
+            
+            var greets;
+            
+            if(hour>=4 && hour<12){
+            greets = "Good Morning" ;
+        }
+        else if(hour >= 12 && hour <= 17){
+            greets = "Good Afternoon" ;
+        }
+        else {
+            greets = "Good Night" ;
+        }
+
+        document.getElementById("greeting").innerHTML = greets +"\t" + name;
+        
+    }, 1000);
+        </script>
+
+
+</head>
+<body>
+    <div class="container" id="home">
+
+        <h1 id="hello"> Hello, <span id="greeting"> </span>  </h1>
+
+        <h3 id="visit">Your Visiting Time is:  <span id="time"> </span>  </h3>
+
+        <h2 id="thank">Thank You for visiting here.</h2>
+
+    </div>
+</body>
+</html>
